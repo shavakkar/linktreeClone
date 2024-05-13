@@ -27,7 +27,7 @@
                                             {{ $link->link }}
                                         </a>
                                     </td>
-                                    <td>0</td>
+                                    <td>{{ $link->visits_count }}</td>
                                     <td>Aug</td>
                                     <td>
                                         <a href="/dashboard/links/{{ $link->id }}">

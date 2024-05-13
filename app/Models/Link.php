@@ -11,13 +11,13 @@ class Link extends Model
 
     protected $guarded = [];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
     public function visits()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Visit::class);
     }
 }
