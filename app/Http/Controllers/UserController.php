@@ -15,6 +15,11 @@ class UserController extends Controller
     }
     public function show(User $user)
     {
-        return view('home');
+        $user->load('links');
+
+        return view('users.show', [
+            'user' => $user,
+            // 'links' => Link::where('user_id', $user->id)->get(),
+        ]);
     }
 }

@@ -13,7 +13,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="name">Link Name</label>
-                                    <input type="text" id="name" name="name" class="form-control{{ $errors->first('name') ? ' is-invalid' : '' }}" placeholder="My Youtube Channel">
+                                    <input type="text" id="name" name="name" class="form-control{{ $errors->first('name') ? ' is-invalid' : '' }}" placeholder="My Youtube Channel"  value="{{ old('name') }}">
 
                                     @if($errors->first('name'))
                                         <div class="invalid-feedback">
@@ -25,7 +25,7 @@
                             <div class="col-12 col-md-6">
                                 <div class="form-group">
                                     <label for="link">Link Url</label>
-                                    <input type="text" id="link" name="link" class="form-control{{ $errors->first('link') ? ' is-invalid' : '' }}" placeholder="https://youtube.com/user/my-channel">
+                                    <input type="text" id="link" name="link" class="form-control{{ $errors->first('link') ? ' is-invalid' : '' }}" placeholder="https://youtube.com/user/my-channel" value="{{ old('link') }}">
 
                                     @if($errors->first('link'))
                                         <div class="invalid-feedback">
@@ -49,36 +49,3 @@
         </div>
     </div>
 @endsection
-
-
-{{-- <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Url</th>
-            <th>Visits</th>
-            <th>Last Visit</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($links as $link)
-            <tr>
-                <td>{{ $link->name }}</td>
-                <td>
-                    <a href="{{ $link->link }}">
-                        {{ $link->link }}
-                    </a>
-                </td>
-                <td>0</td>
-                <td>Aug</td>
-                <td>
-                    <a href="/dashboard/links/{{ $link->id }}">
-                        Edit
-                    </a>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
-<a href="/dashboard/links/new" class="btn btn-primary">Add Link</a> --}}
