@@ -19,9 +19,33 @@ class LinkController extends Controller
     }
     public function create()
     {
+        return view('links.create');
     }
     public function store(Request $request)
     {
+
+        $request->validate([
+            'name' => 'required|max:255',
+            'link' => 'required|url',
+        ]);
+
+        // Approach 1
+
+        // $link = Link::create([
+        //     'user_id' => Auth::id(),
+        //     'name' => $request->input('name'),
+        //     'link' => $request->input('link'),
+        // ]);
+
+        // Approach 2
+
+        $link = Auth::user()->links()->create($request->only(['name', 'link']));
+
+        if ($link) {
+            return redirect()->to('/dashboard/links');
+        }
+
+        return redirect()->back();
     }
     public function edit(Link $link)
     {
