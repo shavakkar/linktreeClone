@@ -28,7 +28,13 @@
                                         </a>
                                     </td>
                                     <td>{{ $link->visits_count }}</td>
-                                    <td>Aug</td>
+                                        {{-- @php
+                                            $latest_visit = $link->visits->latest();
+                                        @endphp
+                                    <td>{{ $latest_visit ? $latest_visit->created_at->format(' M j Y - H:ia') : 'N/A' }}</td> --}}
+                                    <td>
+                                        {{ $link->latest_visit  ? $link->latest_visit->created_at->format('M j Y - H:ia') : 'N/A' }}
+                                    </td>
                                     <td>
                                         <a href="/dashboard/links/{{ $link->id }}">
                                             Edit

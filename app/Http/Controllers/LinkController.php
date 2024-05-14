@@ -10,9 +10,12 @@ class LinkController extends Controller
 {
     public function index()
     {
-        $links = Auth::user()->links()->withCount(['visits'])->get();
+        $links = Auth::user()->links()
+            ->withCount('visits')
+            ->with('latest_visit')
+            ->get();
 
-        return dump($links);
+        // return $links;
 
         return view('links.index', [
             'links' => $links,
